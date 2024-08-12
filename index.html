@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャケ買い！for business</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6ab7ff, #4a90e2);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 48px;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1.5px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #books-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+            flex-grow: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .book-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 225px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .book-item:hover .book-cover {
+            transform: scale(1.05);
+        }
+
+        .book-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .book-author {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        #random-books-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #random-books-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ffcccc;
+            font-size: 14px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 767px) {
+            header {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            #books-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .book-item {
+                width: 90%;
+                max-width: 280px;
+                margin-bottom: 10px;
+            }
+
+            .book-cover {
+                width: 140px;
+                height: 210px;
+            }
+
+            #random-books-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ジャケ買い！for business</h1>
+    </header>
+
+    <div id="books-container"></div>
+    <button id="random-books-btn">小説ガチャを回す</button>
+
+    <footer>
+        Amazonのアソシエイトとして、［ジャケ買い！］は適格販売により収入を得ています。
+    </footer>
+
+    <script>
+        const books = [
+            { title: "ノルウェイの森", author: "村上春樹", isbn: "B07KVTV42B" },
+            { title: "テスカトリポカ", author: "佐藤 究 ",  isbn: "4041146186" },
+            { title: "Ank : a mirroring ape", author: "佐藤 究 ",  isbn: "4065171245" },
+            { title: "QJKJQ", author: "佐藤 究 ",  isbn: "4065125901" },
+            { title: "爆発物処理班の遭遇したスピン", author: "佐藤 究 ",  isbn: "4065279526" },
+            { title: "夜は短し歩けよ乙女", author: "森見 登美彦",  isbn: "4043878028" },
+            { title: "四畳半神話大系", author: "森見 登美彦",  isbn: "404387801X" },
+            { title: "四畳半タイムマシンブルー", author: "森見 登美彦",  isbn: "4041119863" },
+            { title: "有頂天家族", author: "森見 登美彦",  isbn: "4344013840" },
+            { title: "ペンギン・ハイウェイ", author: "森見 登美彦",  isbn: "4041005612" },
+            { title: "新釈 走れメロス 他四篇", author: "森見 登美彦",  isbn: "4041033691" },
+            { title: "太陽の塔", author: "森見 登美彦",  isbn: "4101290512" },
+            { title: "夜行", author: "森見 登美彦",  isbn: "4094067035" },
+            { title: "熱帯", author: "森見 登美彦",  isbn: "4167917467" },
+            { title: "聖なる怠け者の冒険", author: "森見 登美彦",  isbn: "4022648228" },
+            { title: "宵山万華鏡", author: "森見 登美彦",  isbn: "4087468453" },
+            { title: "風が強く吹いている", author: "三浦 しをん",  isbn: "4101167583" },
+            { title: "舟を編む", author: "三浦 しをん",  isbn: "4334768806" },
+            { title: "神去なあなあ日常", author: "三浦 しをん",  isbn: "4198936048" },
+            { title: "まほろ駅前多田便利軒", author: "三浦 しをん",  isbn: "4167761017" },
+            { title: "月魚", author: "三浦 しをん",  isbn: "4043736029" },
+            { title: "きみはポラリス", author: "三浦 しをん",  isbn: "4101167605" },
+            { title: "天国旅行", author: "三浦 しをん",  isbn: "4101167621" },
+　　　　　　{ title: "かにみそ", author: "倉狩 聡",  isbn: "4041030137" },
+　　　　　　{ title: "夜市", author: "恒川 光太郎",  isbn: "4043892012" },
+　　　　　　{ title: "金色機械", author: "恒川 光太郎",  isbn: "4167906090" },
+　　　　　　{ title: "ヘブンメイカー", author: "恒川 光太郎",  isbn: "4041061644" },
+　　　　　　{ title: "草祭", author: "恒川 光太郎",  isbn: "4101351317" },
+　　　　　　{ title: "秋の牢獄", author: "恒川 光太郎",  isbn: "4043892039" },
+　　　　　　{ title: "雷の季節の終わりに", author: "恒川 光太郎",  isbn: "4043892020" },
+　　　　　　{ title: "月夜の島渡り", author: "恒川 光太郎",  isbn: "4041024722" },
+　　　　　　{ title: "無貌の神", author: "恒川 光太郎",  isbn: "4041094240" },
+　　　　　　{ title: "滅びの園", author: "恒川 光太郎",  isbn: "4041112419" },
+　　　　　　{ title: "真夜中のたずねびと", author: "恒川 光太郎",  isbn: "4101351325" },
+　　　　　　{ title: "白昼夢の森の少女", author: "恒川 光太郎",  isbn: "4041125960" },
+　　　　　　{ title: "渚にて： 人類最後の日", author: "ネヴィル・シュート",  isbn: "4488616038" },
+　　　　　　{ title: "星を継ぐもの", author: "ジェイムズ・Ｐ・ホーガン",  isbn: "4488663311" },
+　　　　　　{ title: "ガニメデの優しい巨人", author: "ジェイムズ・Ｐ・ホーガン",  isbn: "448866332X" },
+　　　　　　{ title: "一九八四年", author: "ジョージ オーウェル",  isbn: "4151200533" },
+　　　　　　{ title: "動物農場: おとぎばなし", author: "ジョージ オーウェル",  isbn: "4003226240" },
+　　　　　　{ title: "フランケンシュタイン", author: "メアリー シェリー",  isbn: "4334752160" },
+　　　　　　{ title: "希望のひとしずく", author: "キース・カラブレーゼ",  isbn: "4652205678" },
+            { title: "君の名は。", author: "新海誠", isbn: "4041026229" },
+            // 他の本のデータを追加
+        ];
+
+        const associateTag = "tomoki2724-22";
+
+        function getRandomBooks() {
+            const shuffledBooks = books.sort(() => 0.5 - Math.random());
+            return window.innerWidth <= 767 ? shuffledBooks.slice(0, 1) : shuffledBooks.slice(0, 4);
+        }
+
+        function displayBooks() {
+            const booksContainer = document.getElementById('books-container');
+            booksContainer.innerHTML = '';
+
+            const randomBooks = getRandomBooks();
+            randomBooks.forEach(book => {
+                const amazonLink = `https://www.amazon.co.jp/dp/${book.isbn}/ref=nosim?tag=${associateTag}`;
+                const coverImageUrl = `https://images-na.ssl-images-amazon.com/images/P/${book.isbn}.jpg`;
+                const bookItem = document.createElement('div');
+                bookItem.className = 'book-item';
+
+                bookItem.innerHTML = `
+                    <a href="${amazonLink}" target="_blank">
+                        <img src="${coverImageUrl}" alt="${book.title}" class="book-cover">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">${book.author}</div>
+                    </a>`;
+                booksContainer.appendChild(bookItem);
+            });
+        }
+
+        document.getElementById('random-books-btn').addEventListener('click', displayBooks);
+
+        // ページ読み込み時に初回の表示
+        window.onload = displayBooks;
+    </script>
+</body>
+
+</html>
