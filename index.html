@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ジャケ買い！business</title>
+    <title>ジャケ買い！business | ランダムにビジネス書を表示</title>
+    <meta name="description" content="ジャケ買い！businessは、ビジネス書をランダムに表示し、表紙買いを楽しむことができるウェブサイトです。新しい本との出会いをガチャ感覚でお楽しみください。">
+    <meta name="keywords" content="ビジネス書, 表紙買い, ランダム表示, ガチャ, 本屋体験">
+    <meta name="robots" content="index, follow">
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -174,7 +177,7 @@
 
     <script>
         const books = [
-            { title: "入社1年目の教科書", author: "岩瀬 大輔", isbn: "4478015422" },
+               { title: "入社1年目の教科書", author: "岩瀬 大輔", isbn: "4478015422" },
             { title: "コンサル一年目が学ぶこと", author: "大石 哲之 ", isbn: "4799315323" },
             { title: "失敗の科学", author: "マシュー・サイド", isbn: "4799320238" },
             { title: "多様性の科学", author: "マシュー・サイド", isbn: "4799327526" },
@@ -428,7 +431,7 @@
 
                 bookItem.innerHTML = `
                     <a href="${amazonLink}" target="_blank">
-                        <img src="${coverImageUrl}" alt="${book.title}" class="book-cover">
+                        <img src="${coverImageUrl}" alt="${book.title}の表紙画像" class="book-cover">
                         <div class="book-title">${book.title}</div>
                         <div class="book-author">${book.author}</div>
                     </a>`;
