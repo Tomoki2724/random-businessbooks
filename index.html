@@ -51,16 +51,16 @@
             }
         }
 
-   #books-container {
+  #books-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 0 15px 0 15px; /* 上下のパディングを0に */
+    padding: 15px 15px;
     flex-grow: 1;
     align-items: flex-start;
+    margin-bottom: 0; /* コンテナ下のマージンをリセット */
 }
-
 
     .book-item {
         background-color: #fff;
@@ -106,9 +106,8 @@
             margin-bottom: 10px;
         }
 
-      #random-books-btn {
-    display: block;
-    margin: 0 auto; /* マージンを完全にリセット */
+     #random-books-btn {
+    margin-top: 0; /* マージンをリセット */
     padding: 12px 25px;
     font-size: 16px;
     background-color: #007BFF;
@@ -118,16 +117,24 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
         
 #books-container + #random-books-btn {
     margin-top: 0; /* 上のマージンを完全にリセット */
 }
 
-         .links {
-        text-align: center;
-        margin-top: 10px; /* 上のマージンを減らす */
-    }
+        .links {
+    text-align: center;
+    margin-top: 10px; /* 間隔を調整 */
+}
 
+        /* 上記の要素を全て中央揃えにする */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
         .links a {
             display: inline-block;
             margin: 0 15px;
@@ -181,21 +188,24 @@
 </head>
 
 <body>
-    <header>
+     <header>
         <h1>ジャケ買い！business</h1>
     </header>
 
-    <div id="books-container"></div>
-    <button id="random-books-btn">ガチャを回す</button>
-
-     <div class="links">
-        <a href="https://jakegai-novel.netlify.app">小説はこちら</a>
-        <a href="https://randombooksbynote.netlify.app">noter本はこちら</a>
+    <div class="container">
+        <div id="books-container"></div>
+        <button id="random-books-btn">ガチャを回す</button>
+        <div class="links">
+            <a href="https://jakegai-novel.netlify.app">小説はこちら</a>
+            <a href="https://randombooksbynote.netlify.app">noter本はこちら</a>
+        </div>
     </div>
 
     <footer>
         Amazonのアソシエイトとして、［ジャケ買い！］は適格販売により収入を得ています。
     </footer>
+
+    <!-- スクリプト部分 -->
 
     <script>
         const books = [
