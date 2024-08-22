@@ -51,15 +51,15 @@
             }
         }
 
-    #books-container {
+   #books-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-        padding: 30px 15px;
+        padding: 15px 15px; /* パディングを減らして間隔を詰める */
         flex-grow: 1;
         transition: transform 0.3s ease;
-        align-items: flex-start; /* 追加 */
+        align-items: flex-start;
     }
 
     .book-item {
@@ -107,17 +107,18 @@
         }
 
         #random-books-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 25px;
-            font-size: 16px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+        display: block;
+        margin: 10px auto 0 auto; /* 上のマージンを減らして間隔を詰める */
+        padding: 12px 25px;
+        font-size: 16px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
 
         #random-books-btn:hover {
             background-color: #0056b3;
@@ -125,9 +126,9 @@
         }
 
          .links {
-            text-align: center;
-            margin-top: 20px;
-        }
+        text-align: center;
+        margin-top: 10px; /* 上のマージンを減らす */
+    }
 
         .links a {
             display: inline-block;
