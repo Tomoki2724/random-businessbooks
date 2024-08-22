@@ -51,26 +51,29 @@
             }
         }
 
-        #books-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 30px 15px;
-            flex-grow: 1;
-            transition: transform 0.3s ease;
-        }
+    #books-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 30px 15px;
+        flex-grow: 1;
+        transition: transform 0.3s ease;
+        align-items: flex-start; /* 追加 */
+    }
 
-        .book-item {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            text-align: center;
-            box-sizing: border-box;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .book-item {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        height: auto; /* 固定の高さを削除 */
+        text-align: center;
+        box-sizing: border-box;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        flex-shrink: 0; /* 追加：アイテムの縮小を防ぐ */
+    }
 
         .book-item:hover {
             transform: translateY(-5px);
